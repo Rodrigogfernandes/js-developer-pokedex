@@ -1,4 +1,3 @@
-
 const pokeApi = {}
 
 function convertPokeApiDetailToPokemon(pokeDetail) {
@@ -13,6 +12,11 @@ function convertPokeApiDetailToPokemon(pokeDetail) {
     pokemon.type = type
 
     pokemon.photo = pokeDetail.sprites.other.dream_world.front_default
+
+    // Adicionando peso, altura e poder de ataque
+    pokemon.weight = pokeDetail.weight / 10 // Peso em kg
+    pokemon.height = pokeDetail.height / 10 // Altura em metros
+    pokemon.attack = pokeDetail.stats.find(stat => stat.stat.name === 'attack').base_stat // Poder de ataque
 
     return pokemon
 }
